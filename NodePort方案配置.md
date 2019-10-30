@@ -7,7 +7,7 @@
 
 ![](https://tva1.sinaimg.cn/large/006y8mN6gy1g8fcdkcxjsj31is0u0jwz.jpg)
 
-3. 在`https`访问的nginx中配置
+1. 通过`http`访问Rancher的nginx中配置
 
 ```
 root@ip-172-31-15-150:~# cat /etc/nginx.conf
@@ -41,7 +41,7 @@ http {
 }
 ```
 
-4. 在`http`访问的nginx中配置
+1. 通过`https`访问Rancher的nginx中配置
 
 
 ```
