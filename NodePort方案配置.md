@@ -1,13 +1,13 @@
-1. 在rancher 中将80端口通过nodeport方式映射成 `30080`
+#### 在rancher 中将80端口通过nodeport方式映射成 `30080`
 
 ![](https://tva1.sinaimg.cn/large/006y8mN6gy1g8fccnu6qaj31dr0u0gsi.jpg)
 
 
-2. 在rancher 中将443端口通过nodeport方式映射成 `30443`
+#### 在rancher 中将443端口通过nodeport方式映射成 `30443`
 
 ![](https://tva1.sinaimg.cn/large/006y8mN6gy1g8fcdkcxjsj31is0u0jwz.jpg)
 
-1. 通过`http`访问Rancher的nginx中配置
+#### 通过`http`访问Rancher的nginx中配置
 
 ```
 root@ip-172-31-15-150:~# cat /etc/nginx.conf
@@ -46,7 +46,7 @@ http {
 }
 ```
 
-1. 通过`https`访问Rancher的nginx中配置
+#### 通过`https`访问Rancher的nginx中配置
 
 
 ```
