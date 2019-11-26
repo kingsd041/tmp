@@ -24,6 +24,10 @@ http {
         server 172.31.2.21:30443;
         server 172.31.5.170:30443;
     }
+    map $http_upgrade $connection_upgrade {
+        default Upgrade;
+        ''      close;
+    }
     server {
         listen 80;
 
