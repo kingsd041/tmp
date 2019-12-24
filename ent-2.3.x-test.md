@@ -5,7 +5,7 @@
 - [ ] nodedriver
 - [ ] webhook-receiver
 - [ ] gpu
-- [ ] 单节点安装
+- [x] 单节点安装  -- Hailong
 - [ ] ha安装
 - [x] 离线安装  -- Hailong
 - [ ] login安全增强
