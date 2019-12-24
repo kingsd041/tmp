@@ -9,7 +9,7 @@
 - [ ] ha安装
 - [ ] 离线安装
 - [ ] login安全增强
-- [ ] harbor
+- [x] harbor  -- hailong
 - [ ] audilog
 - [ ] rdns
 
