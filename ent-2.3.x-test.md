@@ -7,9 +7,9 @@
 - [ ] gpu
 - [ ] 单节点安装
 - [ ] ha安装
-- [x] 离线安装
+- [x] 离线安装  -- Hailong
 - [ ] login安全增强
-- [x] harbor  -- hailong
+- [x] harbor  -- Hailong
 - [ ] audilog
 - [ ] rdns
 
