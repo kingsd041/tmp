@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sz-busybox-deployment
+  labels:
+    app: sz-busybox
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sz-busybox
+  template:
+    metadata:
+      labels:
+        app: sz-busybox
+    spec:
+      tolerations:
+      - effect: NoExecute
+        key: node.kubernetes.io/unreachable
+        operator: Exists
+        tolerationSeconds: 2
+      - effect: NoExecute
+        key: node.kubernetes.io/not-ready
+        operator: Exists
+        tolerationSeconds: 2
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: region
+                operator: In
+                values:
+                - shenzhen
+      containers:
+      - name: sz-busybox
+        image: busybox
+        args:
+          - sleep
+          - "1000000"
