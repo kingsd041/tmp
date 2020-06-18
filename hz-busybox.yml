@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hz-busybox-deployment
+  labels:
+    app: hz-busybox
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hz-busybox
+  template:
+    metadata:
+      labels:
+        app: hz-busybox
+    spec:
+      tolerations:
+      - effect: NoExecute
+        key: node.kubernetes.io/unreachable
+        operator: Exists
+        tolerationSeconds: 2
+      - effect: NoExecute
+        key: node.kubernetes.io/not-ready
+        operator: Exists
+        tolerationSeconds: 2
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: region
+                operator: In
+                values:
+                - hangzhou
+      containers:
+      - name: hz-busybox
+        image: busybox
+        args:
+          - sleep
+          - "1000000"
