@@ -90,7 +90,7 @@ spec:
         - name: edge-api-server
           securityContext:
             {}
-          image: "guangbo/edge-api-server:master"
+          image: "cnrancher/edge-api-server:master"
           imagePullPolicy: Always
           ports:
             - name: http
