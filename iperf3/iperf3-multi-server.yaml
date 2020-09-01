@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iperf3-multi-server
+  labels:
+    app: iperf3-multi-server
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: iperf3-multi-server
+  template:
+    metadata:
+      labels:
+        app: iperf3-multi-server
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: role-label
+                operator: In
+                values:
+                - k3s-master-1
+      containers:
+      - name: iperf3-multi-server
+        image: networkstatic/iperf3
+        args: ['-s']
+      terminationGracePeriodSeconds: 0
