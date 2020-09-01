@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: iperf3-server
-        image: networkstatic/iperf3
+        image: kingsd/iperf3:ubuntu-1804
         args: ['-s']
       terminationGracePeriodSeconds: 0
