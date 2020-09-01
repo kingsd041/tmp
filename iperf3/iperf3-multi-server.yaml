@@ -25,6 +25,6 @@ spec:
                 - k3s-master-1
       containers:
       - name: iperf3-multi-server
-        image: networkstatic/iperf3
+        image: kingsd/iperf3:ubuntu-1804
         args: ['-s']
       terminationGracePeriodSeconds: 0
