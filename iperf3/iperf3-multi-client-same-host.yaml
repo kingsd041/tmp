@@ -25,7 +25,7 @@ spec:
                 - k3s-master-1
       containers:
       - name: iperf3-client
-        image: networkstatic/iperf3
+        image: kingsd/iperf3:ubuntu-1804
         command: ['/bin/sh', '-c', 'sleep infinity']
         # To benchmark manually: kubectl exec iperf3-multi-clients-jlfxq -- /bin/sh -c 'iperf3 -c iperf3-server'
       terminationGracePeriodSeconds: 0
