@@ -1,15 +1,15 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: simple-fanout-example
+  name: nginx-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: demo1.kingsd.top
+  - host: demo.kingsd.top
     http:
       paths:
       - path: /
         backend:
-          serviceName: my-service
+          serviceName: nginx
           servicePort: 80
