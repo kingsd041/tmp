@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sz-busybox-deployment
+  labels:
+    app: sz-busybox
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sz-busybox
+  template:
+    metadata:
+      labels:
+        app: sz-busybox
+    spec:
+      containers:
+      - name: sz-busybox
+        image: busybox
+        args:
+          - sleep
+          - "1000000"
