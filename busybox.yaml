@@ -1,22 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sz-busybox-deployment
+  name: busybox-deployment
   labels:
-    app: sz-busybox
+    app: busybox
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: sz-busybox
+      app: busybox
   template:
     metadata:
       labels:
-        app: sz-busybox
+        app: busybox
     spec:
+      tolerations:
+      - effect: NoExecute
+        key: node.kubernetes.io/unreachable
+        operator: Exists
+        tolerationSeconds: 2
+      - effect: NoExecute
+        key: node.kubernetes.io/not-ready
+        operator: Exists
+        tolerationSeconds: 2
       containers:
-      - name: sz-busybox
+      - name: busybox
         image: busybox
         args:
           - sleep
-          - "infinity"
+          - "1000000"
