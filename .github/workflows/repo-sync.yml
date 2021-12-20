@@ -1,5 +1,3 @@
-name: SYNC-REPO-2.5
-
 on:
   push
 
