@@ -11,9 +11,9 @@ jobs:
       shell: bash
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
       id: extract_branch
-	- uses: actions/checkout@v2
-	- name: echo github env
-	  run: |
+    - uses: actions/checkout@v2
+    - name: echo github env
+      run: |
 	    echo ${{ steps.extract_branch.outputs.branch }}
 
 #    - name: repo-sync
