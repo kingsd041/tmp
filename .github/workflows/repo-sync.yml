@@ -18,6 +18,9 @@ jobs:
     - name: echo github env2
       run: |
         echo running on branch ${GITHUB_REF##*/}
+    - name: echo github env3
+      run: |
+        echo running on branch ${GITHUB_REF}
 
 #    - name: repo-sync
 #      uses: cnrancher/git-sync@rancher/v2.0
