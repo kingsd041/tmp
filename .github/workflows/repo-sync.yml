@@ -17,7 +17,7 @@ jobs:
         echo GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}
         echo github.sha ${{ github.sha }} 
         echo github.event.repository.name: ${{ github.event.repository.name }}
-        echo GITHUB_REF_NAME: ${{ GITHUB_REF_NAME }}
+        echo GITHUB_REF: ${{ GITHUB_REF }}
 
 
 #    - name: repo-sync
