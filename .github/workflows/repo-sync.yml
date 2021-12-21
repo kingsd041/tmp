@@ -14,8 +14,8 @@ jobs:
       run: |
         echo running on branch ${GITHUB_REF}
         echo GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}
-         echo github.sha ${{ github.sha }}
-        
+        echo github.sha ${{ github.sha }} 
+        echo github.event.repository.name: ${{ github.event.repository.name }}
 
 #    - name: repo-sync
 #      uses: cnrancher/git-sync@rancher/v2.0
