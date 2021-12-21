@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: 
       shell: bash
-      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      run: echo "${GITHUB_REF##*/}"
       id: extract_branch
 
     - name: repo-sync
@@ -28,4 +28,4 @@ jobs:
         echo DESTINATION_REPO: ${DESTINATION_REPO}
         echo DESTINATION_BRANCH:  ${DESTINATION_BRANCH}
         echo GITHUB_REF: ${GITHUB_REF##*/}
-        echo branch is: ${{ steps.extract_branch.outputs.branch }}
+        echo branch is: ${{ steps.extract_branch }}
