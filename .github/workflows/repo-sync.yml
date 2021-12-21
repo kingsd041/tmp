@@ -9,10 +9,10 @@ jobs:
     steps:
     - name: repo-sync
       env:
-        SOURCE_REPO: "cnrancher/${{ GITHUB_REF##*/  }}"
-        SOURCE_BRANCH: "refs/remotes/source/${{ GITHUB_REF##*/ }}"
-        DESTINATION_REPO: "kingsd041/${{ GITHUB_REPOSITORY##*/ }}"
-        DESTINATION_BRANCH: "refs/heads/${{ GITHUB_REPOSITORY##*/ }}"
+        SOURCE_REPO: cnrancher/${{ GITHUB_REF##*/  }}
+        SOURCE_BRANCH: refs/remotes/source/${{ GITHUB_REF##*/ }}
+        DESTINATION_REPO: kingsd041/${{ GITHUB_REPOSITORY##*/ }}
+        DESTINATION_BRANCH: refs/heads/${{ GITHUB_REPOSITORY##*/ }}
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       run: |
         echo SOURCE_REPO: ${SOURCE_REPO}
