@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: repo-sync
-      run: echo ::set-env name=REPO_NAME::${{ github.event.repository.name }}
       env:
         SOURCE_REPO: "cnrancher/${{ env.REPO_NAME }}"
         SOURCE_BRANCH: "refs/remotes/source/${{ env.BRANCH_NAME }}"
@@ -20,4 +19,4 @@ jobs:
         echo SOURCE_BRANCH: ${SOURCE_BRANCH}
         echo DESTINATION_REPO: ${DESTINATION_REPO}
         echo DESTINATION_BRANCH:  ${DESTINATION_BRANCH}
-        echo GITHUB_REF: ${GITHUB_REF##*/}
+        echo GITHUB_REF: ${{ GITHUB_REF }}
