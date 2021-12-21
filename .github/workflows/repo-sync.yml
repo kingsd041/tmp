@@ -6,13 +6,16 @@ on:
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
+    env:
+      BRANCH_NAME: b1
+      REPO_NAME: r1
     steps:
     - name: repo-sync
       env:
-        SOURCE_REPO: cnrancher/${{ GITHUB_REF##*/  }}
-        SOURCE_BRANCH: refs/remotes/source/${{ GITHUB_REF##*/ }}
-        DESTINATION_REPO: kingsd041/${{ GITHUB_REPOSITORY##*/ }}
-        DESTINATION_BRANCH: refs/heads/${{ GITHUB_REPOSITORY##*/ }}
+        SOURCE_REPO: "cnrancher/${{ env.REPO_NAME }}"
+        SOURCE_BRANCH: "refs/remotes/source/${{ env.BRANCH_NAME }}"
+        DESTINATION_REPO: "kingsd041/${{ env.REPO_NAME }}"
+        DESTINATION_BRANCH: "refs/heads/${{ env.BRANCH_NAME }}"
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       run: |
         echo SOURCE_REPO: ${SOURCE_REPO}
