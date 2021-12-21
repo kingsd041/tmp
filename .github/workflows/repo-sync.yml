@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REPO_NAME: ${{ github.repository }}
+      BRANCH_NAME: ${{ github.ref_name	}}
     steps:
     - name: repo-sync
       env:
@@ -17,6 +18,7 @@ jobs:
         DESTINATION_BRANCH: "refs/heads/${{ env.BRANCH_NAME }}"
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       run: |
+        
         echo SOURCE_REPO: ${SOURCE_REPO}
         echo SOURCE_BRANCH: ${SOURCE_BRANCH}
         echo DESTINATION_REPO: ${DESTINATION_REPO}
