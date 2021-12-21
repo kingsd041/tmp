@@ -6,21 +6,18 @@ on:
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
-    env:
-      REPO_NAME: ${{ github.repository }}
-      BRANCH_NAME: ${{ github.ref_name	}}
     steps:
     - name: 
       shell: bash
-      run: echo "${GITHUB_REF##*/}"
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
       id: extract_branch
-
+      
     - name: repo-sync
       env:
-        SOURCE_REPO: "cnrancher/${{ env.REPO_NAME }}"
-        SOURCE_BRANCH: "refs/remotes/source/${{ env.BRANCH_NAME }}"
-        DESTINATION_REPO: "kingsd041/${{ env.REPO_NAME }}"
-        DESTINATION_BRANCH: "refs/heads/${{ env.BRANCH_NAME }}"
+        SOURCE_REPO: "cnrancher/${{ github.event.repository.name }}"
+        SOURCE_BRANCH: "refs/remotes/source/${{ steps.extract_branch.outputs.branch }}"
+        DESTINATION_REPO: "kingsd041/${{ github.event.repository.name }}"
+        DESTINATION_BRANCH: "refs/heads/${{ steps.extract_branch.outputs.branch }}"
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       run: |
         echo SOURCE_REPO: ${SOURCE_REPO}
@@ -28,4 +25,5 @@ jobs:
         echo DESTINATION_REPO: ${DESTINATION_REPO}
         echo DESTINATION_BRANCH:  ${DESTINATION_BRANCH}
         echo GITHUB_REF: ${GITHUB_REF##*/}
-        echo branch is: ${{ steps.extract_branch }}
+        echo branch is: ${{ steps.extract_branch.outputs.branch }}
+        echo github.event.repository.name: ${{ github.event.repository.name }}
