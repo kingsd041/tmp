@@ -11,7 +11,6 @@ jobs:
       REPO_NAME: ${GITHUB_REPOSITORY##*/}
     steps:
     - name: repo-sync
-      uses: ubuntu-latest
       env:
         SOURCE_REPO: "cnrancher/${{ env.REPO_NAME }}"
         SOURCE_BRANCH: "refs/remotes/source/${{ env.BRANCH_NAME }}"
