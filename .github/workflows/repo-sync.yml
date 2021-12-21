@@ -27,3 +27,4 @@ jobs:
         echo GITHUB_REF: ${GITHUB_REF##*/}
         echo branch is: ${{ steps.extract_branch.outputs.branch }}
         echo github.event.repository.name: ${{ github.event.repository.name }}
+        echo github.ref_type	: ${{ github.ref_type	 }}
