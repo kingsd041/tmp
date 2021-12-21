@@ -1,33 +1,25 @@
-name: test-1-${GITHUB_REF_NAME}
+name: SYNC-REPO-tmp
+
 on:
-  push
+  create
 
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
+    env:
+      BRANCH_NAME: ${GITHUB_REF##*/}
+      REPO_NAME: ${GITHUB_REPOSITORY##*/}
     steps:
-    - uses: actions/checkout@v2
-      
-    - name: echo github env2
+    - name: repo-sync
+      uses: ubuntu-latest
+      env:
+        SOURCE_REPO: "cnrancher/${{ env.REPO_NAME }}"
+        SOURCE_BRANCH: "refs/remotes/source/${{ env.BRANCH_NAME }}"
+        DESTINATION_REPO: "kingsd041/${{ env.REPO_NAME }}"
+        DESTINATION_BRANCH: "refs/heads/${{ env.BRANCH_NAME }}"
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       run: |
-        echo running on branch ${GITHUB_REF##*/}
-    - name: echo github env3
-      run: |
-        echo running on branch ${GITHUB_REF}
-        echo GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}
-        echo github.sha ${{ github.sha }} 
-        echo github.event.repository.name: ${{ github.event.repository.name }}
-        echo GITHUB_REF: ${GITHUB_REF}
-        echo GITHUB_REF_NAME: ${GITHUB_REF_NAME}
-
-
-#    - name: repo-sync
-#      uses: cnrancher/git-sync@rancher/v2.0
-#      env:
-#        SOURCE_REPO: "cnrancher/pandaria-ui"
-#        SOURCE_BRANCH: "refs/remotes/source/2.5-fixes-cn"
-#        DESTINATION_REPO: "ranchervip/pandaria-ui"
-#        DESTINATION_BRANCH: "refs/heads/2.5-fixes-cn"
-#        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-#      with:
-#        args: $SOURCE_REPO $SOURCE_BRANCH $DESTINATION_REPO $DESTINATION_BRANCH
+        echo SOURCE_REPO: ${SOURCE_REPO}
+        echo SOURCE_BRANCH: ${SOURCE_BRANCH}
+        echo DESTINATION_REPO: ${DESTINATION_REPO}
+        echo DESTINATION_BRANCH: ${DESTINATION_BRANCH}
