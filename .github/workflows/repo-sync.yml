@@ -10,7 +10,6 @@ jobs:
       REPO_NAME: ${{ github.repository }}
     steps:
     - name: repo-sync
-      run: echo ::set-env name=REPO_NAME::${{ github.event.repository.name }}
       env:
         SOURCE_REPO: "cnrancher/${{ env.REPO_NAME }}"
         SOURCE_BRANCH: "refs/remotes/source/${{ env.BRANCH_NAME }}"
