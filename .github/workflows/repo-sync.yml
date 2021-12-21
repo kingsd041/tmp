@@ -1,7 +1,7 @@
 name: SYNC-REPO-tmp
 
 on:
-  create
+  push
 
 jobs:
   repo-sync:
