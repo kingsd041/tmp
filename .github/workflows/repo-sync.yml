@@ -1,4 +1,4 @@
-name: ttt-${{ GITHUB_REF_NAME }}
+name: test-1
 on:
   push
 
